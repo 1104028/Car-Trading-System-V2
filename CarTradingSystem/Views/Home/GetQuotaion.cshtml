@@ -1,0 +1,297 @@
+﻿@model CarTradingSystem.ViewModel.QuotationViewModel
+@{
+    ViewBag.Title = "GetQuotaion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/jquery.min.js"></script>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    if (ViewBag.message != null)
+    {
+        <script>
+            alert("@ViewBag.message"); // display string message
+        </script>
+    }
+    <script type="text/javascript">
+
+        var email;
+        var code;
+        function EmailVerification() {
+            var NewEmail = document.getElementById("Email").value;
+            if (NewEmail != email) {
+                var data1 = { "email": NewEmail };
+                var url = '../Home/VerificationCode';
+
+                $.post(url, data1, function (data) {
+                    if (data.EmailSend) {
+                        email = data.email;
+                        code = data.Code;
+                        alert('A Verification code has been sent to your email');
+                    }
+                })
+            }
+
+        }
+        function Codeverification() {
+            var CodeValue = document.getElementById("verfication_code").value;
+
+            if (CodeValue == code) {
+                //submiy_button
+                document.getElementById("submiy_button").disabled = false;
+
+            }
+            else {
+                document.getElementById("submiy_button").disabled = true;
+                alert('Code not matched!!!!');
+
+            }
+        }
+        $(function () {
+            $("#CountryID").change(function () {
+
+                var CountryName = $("#CountryID :selected").text();
+             
+                if (CountryName == "Other") {
+                    $('#seaports').hide();
+                    $('#country-name').show();
+                    $('#port-name').show();
+
+                }
+                else {
+
+                    $('#country-name').hide();
+                    $('#port-name').hide();
+                    $('#seaports').show();
+                    var CountryId = $("#CountryID :selected").val();
+                    var url = '../Country/SeaPorts';
+                    var data1 = { "CountryID": CountryId };
+
+                    $.post(url, data1, function (data) {
+                        var items = [];
+                        items.push("<option value=>" + "- Please select a Sea Port -" + "</option>");
+                        for (var i = 0; i < data.length; i++) {
+
+                            items.push("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                        }
+
+                        $("#SeaPortID").html(items.join(' '));
+
+
+                    })
+                }
+
+            });
+
+
+            $("#DeliveryID").change(function () {
+                var Deliverytype = $("#DeliveryID :selected").val();
+                console.log(Deliverytype);
+                if (Deliverytype == 1) {
+                    $('#delivery-address').hide();
+                    $('#warning').show();
+                }
+                else if (Deliverytype == 2) {
+                    $('#delivery-address').show();
+                    $('#warning').hide();
+                }
+            });
+
+        });
+
+    </script>
+
+    <section class="quotation-car-project-page">
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-4 border-0">
+                        <img class="card-img-top" src="@Model.ThumbInfo.CarImage" alt="">
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-4 border-0">
+                        <h2>@Model.ThumbInfo.ModelName</h2>
+                        <h3 class="price">$ @Model.ThumbInfo.Price USD</h3>
+                        <h4>Made in @Model.ThumbInfo.Country</h4>
+                        <h5>Year of Release: @Model.ThumbInfo.YearofRelease</h5>
+
+                    </div>
+
+
+                    <br />
+                    
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section class="quotation-form" id="quotation-form">
+        <div class="container">
+            <div class="startern-section">
+
+                <div class="row">
+                    <div class="col-md-2">
+                    </div>
+
+                    <div class="col-md-8 col-md-offset-3 col-sm-10 col-sm-offset-1">
+
+                        <div class="service-order-form-section">
+                            <h1 class="myblink" style="display: block;">Submit Your Quotation</h1>
+
+                            <div class="service-order-form">
+                                <ul class="progress_circles">
+                                    <li id="stepIndicator-1" class="step active">1</li>
+                                    <li class="connector"></li>
+                                    <li id="stepIndicator-2" class="step">2</li>
+                                    <li class="connector"></li>
+                                    <li id="stepIndicator-3" class="step">3</li>
+                                </ul>
+                                <div id="form-verification-error">
+                                </div>
+
+                                <div id="test">
+                                </div>
+                                <div class="" id="order-step-1" style="display:block">
+                                    <div class="order-form form-group">
+                                        <label for="">DELIVERY COUNTRY</label>
+                                        <br>
+                                        <div class="btn-group bootstrap-select show-tick">
+                                            @Html.HiddenFor(model => Model.ModelID)
+                                            @Html.DropDownListFor(model => model.CountryID, Model.CountryList, "Select Country", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.CountryID, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" id="country-name" style="display:none;">
+                                        <label for="">Country Name</label>
+                                        <br>
+                                        <div class="input-group">
+                                            @Html.EditorFor(model => model.CountryName, new { htmlAttributes = new { @class = "form-control", placeholder = "Country Name" } })
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group" id="seaports">
+                                        <label for="">PORT</label>
+                                        <br>
+                                        <div class="btn-group bootstrap-select show-tick">
+                                            @Html.DropDownListFor(model => model.SeaPortID, Model.SeaPortList, "Select Port", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.SeaPortID, "", new { @class = "text-danger" })
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group" id="port-name" style="display:none;">
+                                        <label for="">PORT Name</label>
+                                        <br />
+                                        <div class="input-group">
+                                            @Html.EditorFor(model => model.SeaPortName, new { htmlAttributes = new { @class = "form-control", placeholder = "Port Name" } })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="">Delivery Type</label>
+                                        <br>
+                                        <div class="btn-group bootstrap-select show-tick">
+                                            @Html.DropDownListFor(model => model.DeliveryID, Model.DeliveryOptions, "Select Delivery Option", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.DeliveryID, "", new { @class = "text-danger" })
+
+
+                                        </div>
+                                        <span style="color:red;display:none;" id="warning">Self: You will receive car from port.</span>
+                                    </div>
+
+                                    <div class="form-group" id="delivery-address" style="display:none">
+                                        <label for="">Address</label>
+                                        <div class="input-group">
+                                            @Html.EditorFor(model => model.DeliveryAddress, new { htmlAttributes = new { @class = "form-control", placeholder = "Delivery Address" } })
+                                        </div>
+                                    </div>
+                                    <div align="center">
+                                        <a class="btn-block btn-order-form" onclick="startern_show_step_2()">
+                                            NEXT
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="" id="order-step-2" style="display:none">
+                                    <div class="form-group">
+                                        <label for="">Full Name</label>
+
+                                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control", placeholder = "Full Name" } })
+                                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Phone</label>
+                                        <div class="input-group">
+                                            @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Contact Number" } })
+                                            @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Email</label>
+                                        <div class="input-group">
+                                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "abc@example.com" } })
+                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label for="">Address</label>
+                                        <div class="input-group">
+                                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Address" } })
+                                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div align="center">
+                                        <a class="btn-block btn-order-form" onclick="startern_show_step_3();EmailVerification()">
+                                            NEXT
+                                        </a>
+                                    </div>
+                                    <div align="center" style="margin-top: -20px;">
+                                        <a class="btn-block btn-order-form" onclick="startern_show_step('1')">
+                                            BACK
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="" id="order-step-3" style="display:none">
+
+                                    <div class="form-group">
+                                        <label for="">Verification Code</label>
+                                        <input type="text" class="form-control" id="verfication_code" name="verfication_code" onchange="Codeverification()">
+                                    </div>
+
+                                    <div align="center">
+                                        <button type="submit" id="submiy_button" class="btn-order-form button btn-block" disabled>
+                                            SUBMIT
+                                        </button>
+                                    </div>
+                                    <div align="center" style="margin-top: -20px;">
+                                        <a class="btn-block btn-order-form" onclick="startern_show_step('2')">
+                                            BACK
+                                        </a>
+                                    </div>
+                                    <input type="hidden" name="create_startern_form" value="1">
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+}

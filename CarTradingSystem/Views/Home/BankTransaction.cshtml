@@ -1,0 +1,91 @@
+﻿@model CarTradingSystem.ViewModel.BankPayAdd
+@{
+    ViewBag.Title = "BankTransaction";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("BankTransaction",
+                        "Home",
+                        FormMethod.Post,
+                        new { enctype = "multipart/form-data" }))
+{
+
+    if (ViewBag.message != null)
+    {
+        <script>
+            alert("@ViewBag.message"); // display string message
+        </script>
+    }
+    <div class="container">
+        <div class="startern-section">
+            <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-8 col-md-offset-3 col-sm-10 col-sm-offset-1">
+                    <div class="service-order-form-section">
+                        <h1 class="myblink" style="display: block;">Submit Your Payment Information</h1>
+                        <div class="service-order-form">
+                            <div class="" id="order-step-3">
+
+                                <div class="form-group">
+                                    <label for="">Invoice No</label>
+                                    @Html.EditorFor(model => model.InvoiceNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Invoice number" } })
+                                    @Html.ValidationMessageFor(model => model.InvoiceNo, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Bank Name</label>
+                                    @Html.EditorFor(model => model.BankName, new { htmlAttributes = new { @class = "form-control", placeholder = "Bank Name" } })
+                                    @Html.ValidationMessageFor(model => model.BankName, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Brach Name</label>
+                                    @Html.EditorFor(model => model.BranchName, new { htmlAttributes = new { @class = "form-control", placeholder = "Brach Name" } })
+                                    @Html.ValidationMessageFor(model => model.BranchName, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Bank Identifier Code</label>
+                                    @Html.EditorFor(model => model.BankIdentifierCode, new { htmlAttributes = new { @class = "form-control", placeholder = "Bank Identifier Code" } })
+                                    @Html.ValidationMessageFor(model => model.BankIdentifierCode, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Account Name</label>
+                                    @Html.EditorFor(model => model.AccountName, new { htmlAttributes = new { @class = "form-control", placeholder = "Account Name" } })
+                                    @Html.ValidationMessageFor(model => model.AccountName, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Account Number</label>
+                                    @Html.EditorFor(model => model.AccountNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Account Number" } })
+                                    @Html.ValidationMessageFor(model => model.AccountNumber, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Date</label>
+                                    @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Amount</label>
+                                    @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", placeholder = "USD" } })
+                                    @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Bank Receipt</label>
+
+                                    <input type="file" name="BankReceipt" id="BankReceipt" accept="image/*" />
+                                </div>
+
+                                <div align="center">
+                                    <button type="submit" id="submiy_button" class="btn-order-form button btn-block">
+                                        SUBMIT
+                                    </button>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

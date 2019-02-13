@@ -1,0 +1,57 @@
+﻿@model IEnumerable<CarTradingSystem.Models.Order>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="text-align:center">Order List</h2>
+<link href="~/Content/ListStylesRuku.css" rel="stylesheet" />
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th id="table-header">
+            @Html.DisplayNameFor(model => model.Model.ModelName)
+        </th>
+
+        <th id="table-header">
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </th>
+ 
+        <th id="table-header">
+            @Html.DisplayNameFor(model => model.CustomerAddress)
+        </th>
+
+        <th id="table-header">
+            @Html.DisplayNameFor(model => model.OrderStatus)
+        </th>
+
+        <th id="table-header">Operations</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td id="table-header">
+                @Html.DisplayFor(modelItem => item.Model.ModelName)
+            </td>
+
+            <td id="table-header">
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td id="table-header">
+                @Html.DisplayFor(modelItem => item.CustomerAddress)
+            </td>
+            <td id="table-header">
+                @Html.DisplayFor(modelItem => item.OrderStatus)
+            </td>
+
+            <td id="table-header">
+                @Html.ActionLink("Edit", "Edit", new { id = item.ModelID }) |
+                @Html.ActionLink("Send Invoice", "Invoice", new { id = item.ModelID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ModelID })
+            </td>
+        </tr>
+    }
+
+</table>

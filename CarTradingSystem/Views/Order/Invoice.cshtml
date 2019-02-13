@@ -1,0 +1,218 @@
+﻿@model CarTradingSystem.ViewModel.SendOrderInvoice
+@{
+    ViewBag.Title = "Order Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="text-align:center;">Order Details</h2>
+<style>
+    .height {
+        min-height: 200px;
+    }
+
+    .icon {
+        font-size: 47px;
+        color: #5CB85C;
+    }
+
+    .iconbig {
+        font-size: 77px;
+        color: #5CB85C;
+    }
+
+    .table > tbody > tr > .emptyrow {
+        border-top: none;
+    }
+
+    .table > thead > tr > .emptyrow {
+        border-bottom: none;
+    }
+
+    .table > tbody > tr > .highrow {
+        border-top: 3px solid;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <script>
+        function TotalCostCalculation() {
+
+            var baseprice = document.getElementById("BasePrice").value;
+           
+
+            var seaportcost = document.getElementById("SeaPortCost").value;
+            var shiftingcost = document.getElementById("ShiftingCost").value;
+            var vatcost = document.getElementById("VAT").value;
+
+            if (baseprice && seaportcost && shiftingcost && vatcost) {
+
+                base = parseFloat(baseprice);
+                seaport = parseFloat(seaportcost);
+                shifting = parseFloat(shiftingcost);
+                vat = parseFloat(vatcost);
+               
+
+                var total = base + seaport + shifting + vat;
+                console.log(total);
+                document.getElementById("TotalCost").value = total;
+            }
+           
+        }
+    </script>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="text-center">
+                    @Html.HiddenFor(m => m.OrderID)
+                    <h2>Quotation for Invoice No #@Model.InvoiceNo</h2>
+                    @Html.HiddenFor(modelItem => Model.InvoiceNo)
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-xs-12 col-md-4 col-lg-4 pull-left">
+                        <div class="panel panel-default height">
+                            <div class="panel-heading">Customer Details</div>
+                            <div class="panel-body">
+                                <strong>
+                                    Customer Name:
+                                </strong>
+                                @Html.DisplayFor(modelItem => Model.CustomerName)
+                                @Html.HiddenFor(modelItem => Model.CustomerName)
+                                <br>
+                                <strong>
+                                    Customer Email:
+                                </strong>
+                                @Html.DisplayFor(modelItem => Model.CustomerEmail)
+                                @Html.HiddenFor(modelItem => Model.CustomerEmail)<br>
+                                <strong>
+                                    Contact Number:
+                                </strong>
+                                @Html.DisplayFor(modelItem => Model.CustomerContactNumber)
+                                @Html.HiddenFor(modelItem => Model.CustomerContactNumber)<br>
+                                <br>
+                                <strong>
+                                    Address:
+                                </strong>
+                                @Html.DisplayFor(modelItem => Model.CustomerAddress)
+                                @Html.HiddenFor(modelItem => Model.CustomerAddress)<br />
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-4 col-lg-4">
+                        <div class="panel panel-default height">
+                            <div class="panel-heading">Quotation Details</div>
+                            <div class="panel-body">
+                                <strong>Model Name:</strong> @Html.DisplayFor(modelItem => Model.ModelName)
+                                @Html.HiddenFor(modelItem => Model.ModelName)<br>
+                                <strong>Company Name:</strong>abc<br>
+                                <strong>Country:</strong> Japan<br>
+                                <strong>Year Of Release:</strong> 2018<br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-4 col-lg-4">
+                        <div class="panel panel-default height">
+                            <div class="panel-heading">Shipping Address</div>
+                            <div class="panel-body">
+                                <strong>Name:</strong>@Model.CustomerName<br>
+                                <strong>Country: </strong> @Model.Country<br>
+                                @Html.HiddenFor(modelItem => Model.Country)
+                                <strong>Port: </strong> @Model.PortName<br>
+                                @Html.HiddenFor(modelItem => Model.PortName)
+                                <strong>Address: </strong> @Model.DeliveryAddress<br>
+                                @Html.HiddenFor(modelItem => Model.DeliveryAddress)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="text-center"><strong>Quotation summary</strong></h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <td><strong>Item Name</strong></td>
+                                        <td class="text-center"><strong>Item Price</strong></td>
+                                        <td class="text-center"><strong>Item Quantity</strong></td>
+                                        <td class="text-center"><strong>Total</strong></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>@Model.ModelName</td>
+                                        <td class="text-center">$@Model.BasePrice USD</td>
+                                        <td class="text-center">1</td>
+                                        <td class="text-center">$@Model.BasePrice USD</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="highrow"></td>
+                                        <td class="highrow"></td>
+                                        <td class="highrow text-center"><strong>Subtotal</strong></td>
+                                        <td class="highrow text-center">$ @Html.TextBoxFor(modeitem => Model.BasePrice, new { onchange = "TotalCostCalculation()" }) USD</td>
+                                        @Html.HiddenFor(modeitem => Model.BasePrice)
+                                    </tr>
+                                    <tr>
+
+                                        <td class="emptyrow"></td>
+                                        <td class="emptyrow"></td>
+                                        <td class="emptyrow text-center"><strong>Shipping Cost</strong></td>
+                                        <td class="emptyrow text-center">$@Html.TextBoxFor(modelItem => Model.SeaPortCost, new { onchange = "TotalCostCalculation()" }) USD</td>
+                                        @Html.HiddenFor(modeitem => Model.SeaPortCost)
+                                    </tr>
+
+                                    <tr>
+                                        <td class="emptyrow"></td>
+                                        <td class="emptyrow"></td>
+                                        <td class="emptyrow text-center"><strong>Shifting Cost</strong></td>
+                                        <td class="emptyrow text-center">$@Html.TextBoxFor(modelItem => Model.ShiftingCost, new { onchange = "TotalCostCalculation()" }) USD</td>
+                                        @Html.HiddenFor(modeitem => Model.ShiftingCost)
+                                    </tr>
+
+                                    <tr>
+                                        <td class="emptyrow"></td>
+                                        <td class="emptyrow"></td>
+                                        <td class="emptyrow text-center"><strong>VAT</strong></td>
+                                        <td class="emptyrow text-center">$ @Html.TextBoxFor(modelItem => Model.VAT, new { onchange = "TotalCostCalculation()" }) USD</td>
+                                        @Html.HiddenFor(modeitem => Model.VAT)
+                                    </tr>
+                                    <tr>
+                                        <td class="emptyrow"></td>
+                                        <td class="emptyrow"></td>
+                                        <td class="emptyrow text-center"><strong>Total</strong></td>
+                                        <td class="emptyrow text-center">$ <input type="number" id="TotalCost" readonly required/> USD</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-primary" type="submit">Send Quotation</button>
+            </div>
+
+            <div class="col-md-4">
+
+            </div>
+        </div>
+    </div>
+}

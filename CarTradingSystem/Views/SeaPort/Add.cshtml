@@ -1,0 +1,55 @@
+﻿@model CarTradingSystem.ViewModel.SeaPortAdd
+@{
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="text-align:center">Add Seaport</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    if (ViewBag.message != null)
+    {
+        <script>
+            alert("@ViewBag.message"); // display string message
+        </script>
+    }
+    <style>
+        .register-box {
+            margin-top: 1%;
+        }
+    </style>
+    <div class="register-box">
+        <div class="register-box-body">
+
+            <div class="form-group has-feedback">
+                <label>Seaport Code</label>
+                @Html.EditorFor(model => model.SerPortCode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SerPortCode, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group has-feedback">
+                <label>Seaport Name</label>
+                @Html.EditorFor(model => model.SerPortName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SerPortName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group has-feedback">
+                <label>Country Name</label>
+                @Html.DropDownListFor(m => m.CountryID, Model.CountryList, "- Country -", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CountryID, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="row">
+                <div class="col-xs-8">
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Add</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        </div>
+        <!-- /.form-box -->
+    </div>
+    <!-- /.form-box -->
+}

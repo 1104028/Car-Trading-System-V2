@@ -1,0 +1,98 @@
+﻿@model CarTradingSystem.ViewModel.HomePage
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section id="carSlider" class="carousel slide car-slider" data-ride="carousel">
+
+    <div class="carousel-inner">
+        <div class="carousel-item car-overlay active">
+            <img src="~/Resource/banner/banner.jpg" />
+            <div class="carousel-caption animated bounceInDown delay-2s">
+                <div class="car-display-table">
+                    <div class="car-display-table-cell">
+                        <div class="container">
+                            <h2 class="text-light">
+                                Great cars.<br />
+                                Delivered to you.<br />
+                                Get in.
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="car-card-grids">
+    <div class="container">
+        <div class="car-section-header text-center">
+            <h3>Latest Cars</h3>
+        </div>
+        @{ int i = 0;}
+
+        <div class="row">
+            @foreach (var best in Model.latestcarlist)
+            {
+                <div class="col-md-3 col-sm-4" style="margin-bottom:2%;">
+                    <div class="panel panel-default">
+                        <a href="@Url.Action("CarDetails", "Home",new { CarID = best.ModelID})">
+                            <div class="panel-thumbnail"><img src="@best.CardImage" class="img-responsive"></div>
+                            <div class="panel-body">
+                                <div class="subtext">
+                                    <h3 class="car-title">@best.ModelName</h3>
+                                    <div class="car-details">
+                                        <div class="trim">@best.BodyStyle</div>
+                                    </div>
+                                    <div class="price">$@best.Price USD</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div><!--/col-->
+
+
+            }
+            <hr>
+        </div>
+        <br />
+
+    </div>
+</section>
+
+<section class="car-card-grids">
+    <div class="container">
+        <div class="car-section-header text-center">
+            <h3>Best Seller</h3>
+        </div>
+
+        <div class="row">
+
+            @foreach (var best in Model.bestsellerlist)
+            {
+                <div class="col-md-3 col-sm-4">
+                    <div class="panel panel-default">
+                        <a href="@Url.Action("CarDetails", "Home",new { CarID = best.ModelID})">
+                            <div class="panel-thumbnail"><img src="@best.CardImage" class="img-responsive"></div>
+                            <div class="panel-body">
+                                <div class="subtext">
+                                    <h3 class="car-title">@best.ModelName</h3>
+                                    <div class="car-details">
+                                        <div class="trim">@best.BodyStyle</div>
+                                    </div>
+                                    <div class="price">$@best.Price USD</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div><!--/col-->
+            }
+        </div>
+    </div>
+</section>
+

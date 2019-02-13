@@ -1,0 +1,108 @@
+﻿@model CarTradingSystem.ViewModel.LatestCarUpdate
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="text-align:center;">Update Latest Car</h2>
+<script src="~/Scripts/jquery.min.js"></script>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    if (ViewBag.success != null)
+    {
+        <script>
+            alert("@ViewBag.success"); // display string message
+        </script>
+    }
+    <style>
+        .register-box {
+            margin-top: 1%;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#CompanyId").change(function () {
+
+                var CompanyId = $("#CompanyId :selected").val();
+                var url = '../BestSeller/BrandList';
+                var data1 = { "CompanyId": CompanyId };
+
+                $.post(url, data1, function (data) {
+                    var items = [];
+                    items.push("<option value=>" + "- Please select a Brand -" + "</option>");
+                    for (var i = 0; i < data.length; i++) {
+
+                        items.push("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                    }
+
+                    $("#BrandId").html(items.join(' '));
+
+
+                })
+            });
+
+        });
+
+        $(function () {
+            $("#BrandId").change(function () {
+
+                var BrandId = $("#BrandId :selected").val();
+                var url = '../BestSeller/CarList';
+                var data1 = { "BrandId": BrandId };
+
+                $.post(url, data1, function (data) {
+                    var items = [];
+                    items.push("<option value=>" + "- Please select a Model -" + "</option>");
+                    for (var i = 0; i < data.length; i++) {
+
+                        items.push("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                    }
+
+                    $("#ModelId").html(items.join(' '));
+
+
+                })
+            });
+
+        });
+    </script>
+    <div class="register-box">
+        <div class="register-box-body">
+            @Html.HiddenFor(m => Model.LatestCarID)
+            <div class="form-group has-feedback">
+                <label>Company Name</label>
+                @Html.DropDownListFor(m => m.CompanyId, Model.CompanyList, "- Please select a Company -", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CompanyId, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group has-feedback">
+                <label>Brand Name</label>
+                @Html.DropDownListFor(m => m.BrandId, Model.BrandList, "- Please select a Brand -", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BrandId, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group has-feedback">
+                <label>Model Name</label>
+                @Html.DropDownListFor(m => m.ModelId, Model.ModelList, "- Please select a Model -", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ModelId, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="row">
+                <div class="col-xs-8">
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Update</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        </div>
+        <!-- /.form-box -->
+    </div>
+    <!-- /.form-box -->
+}

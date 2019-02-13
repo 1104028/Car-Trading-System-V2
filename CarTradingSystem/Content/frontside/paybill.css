@@ -1,0 +1,283 @@
+@-webkit-keyframes fadein {
+    0% {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+
+.credit-page.start-purchase-page-container {
+    padding-top: 0;
+    width: 100%;
+    background: #f5f5f5
+}
+.start-purchase-page .pay-option-container {
+    border-radius: 0;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    margin: 20px 0
+}
+
+@media only screen and (max-width:767px) {
+    .start-purchase-page .pay-option-container {
+        text-align: center;
+        margin: 20px
+    }
+}
+
+.start-purchase-page .start-purchase-page-title {
+    font-family: Whitney-Semibold;
+    font-size: 26px;
+    line-height: 1.15;
+    letter-spacing: -.5px;
+    margin: 20px 0
+}
+
+@media only screen and (max-width:767px) {
+    .start-purchase-page .start-purchase-page-title {
+        margin: 20px
+    }
+}
+
+.start-purchase-page .pay-option-headline {
+    background-color: #1960d0;
+    font-family: Whitney-Semibold;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    color: #fff;
+    text-transform: uppercase;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 29px
+}
+
+@media only screen and (max-width:767px) {
+    .start-purchase-page .pay-option-headline {
+        padding-left: 0
+    }
+}
+
+.start-purchase-page .pay-option-content {
+    padding: 30px 0 30px 29px
+}
+
+@media only screen and (max-width:767px) {
+    .start-purchase-page .pay-option-content {
+        padding: 30px 20px 25px
+    }
+}
+
+.start-purchase-page .pay-option-content.first {
+    opacity: 0;
+    -webkit-animation: fadein .5s .75s 1 forwards;
+    animation: fadein .5s .75s 1 forwards
+}
+
+@media only screen and (min-width:768px) {
+    .start-purchase-page .pay-option-content.first {
+        padding-bottom: 20px
+    }
+}
+
+.start-purchase-page .pay-option-content.second {
+    opacity: 0;
+    -webkit-animation: fadein .5s 1s 1 forwards;
+    animation: fadein .5s 1s 1 forwards
+}
+
+.start-purchase-page .pay-option-content.third {
+    opacity: 0;
+    -webkit-animation: fadein .5s 1.25s 1 forwards;
+    animation: fadein .5s 1.25s 1 forwards
+}
+
+.start-purchase-page .pay-option-title {
+    font-family: Whitney-Semibold;
+    font-size: 24px;
+    line-height: 1.17;
+    color: #041022
+}
+
+@media only screen and (max-width:767px) {
+    .start-purchase-page .finance-selling-points {
+        text-align: left;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 168px;
+        position: relative
+    }
+}
+
+.start-purchase-page .finance-selling-points > li {
+    font-family: Whitney-Semibold;
+    font-size: 14px;
+    line-height: 1.43;
+    color: #041022;
+    margin-bottom: 10px
+}
+
+.start-purchase-page .pay-options-grid {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+    .start-purchase-page .pay-options-grid p {
+        margin-bottom: 0
+    }
+
+.start-purchase-page .pay-options-grid-left {
+    -ms-flex-preferred-size: 70%;
+    flex-basis: 70%
+}
+
+@media only screen and (max-width:767px) {
+    .start-purchase-page .pay-options-grid {
+        display: block
+    }
+
+    .start-purchase-page .pay-options-grid-left {
+        margin-bottom: 10px
+    }
+}
+
+.start-purchase-page .checkmark {
+    margin-right: 7px;
+    position: relative;
+    top: -1px
+}
+
+
+.start-purchase-page {
+    max-width: 780px;
+    opacity: 0;
+    -webkit-animation: fadein .5s .5s 1 forwards;
+    animation: fadein .5s .5s 1 forwards
+}
+
+@media only screen and (min-width:768px) and (max-width:1023px) {
+    .start-purchase-page {
+        padding: 30px 62px 50px
+    }
+}
+
+@media only screen and (max-width:767px) {
+    .start-purchase-page h1 {
+        text-align: center
+    }
+}
+
+.start-purchase-page .yes-no {
+    margin: 20px auto
+}
+
+.hold-page .credit-page-main {
+    max-width: 779px
+}
+
+.credit-page-main,
+.credit-sidebar {
+    border-radius: 0;
+    background-color: #fff
+}
+
+@media only screen and (max-width:1023px) {
+    .credit-page-main,
+    .credit-sidebar {
+        border-top: 0
+    }
+}
+
+.credit-page-main {
+    padding: 30px 50px 20px;
+    width: 768px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .08);
+    border: 1px solid #e0e0e0;
+    overflow: hidden;
+    opacity: 0;
+    -webkit-animation: fadein .5s .5s 1 forwards;
+    animation: fadein .5s .5s 1 forwards
+}
+
+@media only screen and (min-width:1024px) and (max-width:1279px) {
+    .credit-page-main {
+        min-width: 610px;
+        margin-left: 50px;
+        padding: 30px 30px 20px
+    }
+}
+
+@media only screen and (max-width:767px) {
+    .credit-page-main {
+        padding: 0
+    }
+}
+
+.credit-page-main {
+    background: #fff
+}
+
+.landingpage .section-bullets,
+.mb-2 {
+    margin-bottom: 24px !important;
+    margin-bottom: 1.5rem !important
+}
+
+.btn {
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 0;
+    padding: 8px 16px;
+    padding: .5rem 1rem;
+    font-size: 18px;
+    font-weight: 600;
+    -webkit-transition: color .1s, background-color .1s;
+    transition: color .1s, background-color .1s
+}
+
+.btn-secondary {
+    background-color: #fff;
+    color: #4EC2E7 !important;
+    border: 2px solid #4EC2E7 !important
+}
+
+    .btn-secondary:focus,
+    .btn-secondary:hover {
+        background-color: #4EC2E7;
+        color: #fff !important
+    }
+
+.btn-pay-option {
+    min-width: 142px;
+    height: 40px;
+    font-family: Whitney-Medium;
+    font-size: 18px;
+    line-height: 1;
+    padding: 9px 8px
+}
+
+    .btn-pay-option span {
+        vertical-align: super
+    }
+
+@media only screen and (max-width:767px) {
+    .btn-pay-option {
+        width: 100%
+    }
+}

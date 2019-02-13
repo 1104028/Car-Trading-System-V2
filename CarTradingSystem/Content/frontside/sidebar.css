@@ -1,0 +1,201 @@
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+}
+
+    #sidebar.active {
+        margin-left: -250px;
+    }
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+
+        #sidebar.active {
+            margin-left: 0;
+        }
+}
+
+/*
+    ADDITIONAL DEMO STYLE, NOT IMPORTANT TO MAKE THINGS WORK BUT TO MAKE IT A BIT NICER :)
+*/
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#sidebar {
+    /* don't forget to add all the previously mentioned styles here too */
+    background: white;
+    color: black;
+    transition: all 0.3s;
+}
+
+    #sidebar .sidebar-header {
+        padding: 20px;
+        background: white;
+    }
+
+    #sidebar ul li {
+        border-bottom: 1px solid #f5f5f5;
+    }
+
+    #sidebar ul p {
+        color: black;
+        padding: 10px;
+    }
+
+    #sidebar ul li a {
+        padding: 10px;
+        font-size: 0.9em;
+        display: block;
+    }
+
+        #sidebar ul li a:hover {
+            color: red;
+            background: #fff;
+        }
+
+    #sidebar ul li.active > a, a[aria-expanded="true"] {
+        color: red;
+        background: white;
+    }
+
+ul ul a {
+    font-size: 0.8em !important;
+    background: white;
+}
+
+.all-body-types, .all-body-types:hover {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    color: #fff;
+    background-color: #6c717a;
+    border-color: transparent;
+    width: 215px;
+    border: 1px solid #d6d7da; 
+    margin-left: 15px;
+    padding: 0px;
+   
+}
+
+.filter-body-type {
+    width: 104px;
+    height: 67px;
+    display: inline-block;
+    margin: 1px 2px 0;
+    text-align: center;
+}
+
+.filter-body-type .suv {
+    background-image: url(../images/car.png);
+}
+
+.filter-body-type .filter-car-icon {
+    max-width: 70px;
+    height: 67px;
+    display: block;
+    position: relative;
+    margin: 5px auto 0;
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+
+.filter-body-type .car-icon-text, .filter-body-type .car-icon-text-active {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.71;
+    text-align: center;
+    margin-top: -10px;
+    display: block;
+    position: relative;
+    width: 100%;
+    color: #6c717a;
+}
+
+
+
+.filter-select-bar {
+    font-family: Whitney-Book;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.71;
+    color: #6c717a;
+    line-height: 27px;
+    width: 215px;
+    border: 1px solid #d6d7da;
+    text-align: center;
+    vertical-align: middle;
+    margin: 10px 0;
+    background-color: #fff;
+    font-family: Whitney-Medium;
+    display: inline-block;
+    position: relative;
+    color: #041022;
+}
+
+.half-select-bar {
+   
+    display: inline-block;
+    margin-left:15px;
+    padding:5px;
+}
+
+.btn-filter {
+    color: #fff;
+    background-color: gainsboro;
+    border-color: gainsboro;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    color:black;
+    
+}

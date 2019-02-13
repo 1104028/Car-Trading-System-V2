@@ -1,0 +1,177 @@
+﻿@model CarTradingSystem.ViewModel.BuyViewModel
+@{
+    ViewBag.Title = "Buy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <ul class="list-unstyled components">
+            <button type="button" id="sidebarCollapse" class="btn-filter ">
+                <i class="fas fa-align-left"></i>
+                <span>Filters</span>
+            </button>
+
+            <li>
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">MAKE & MODEL</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                        @Html.ActionLink("All Company", "Buy", new { BodyType = Model.BodyType, YearMin = Model.YearMin, YearMax = Model.YearMax, PriceMin = Model.PriceMin, PriceMax = Model.PriceMax })
+                    </li>
+                    @foreach (var item in Model.CompanyList)
+                    {
+                        <li>
+                            @Html.ActionLink(item.CompanyName + "(" + item.NumberOfCar + ")", "Buy", new { CompanyID = item.CompanyID, BodyType = Model.BodyType, YearMin = Model.YearMin, YearMax = Model.YearMax, PriceMin = Model.PriceMin, PriceMax = Model.PriceMax })
+                        </li>
+                    }
+                </ul>
+            </li>
+
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">BODY TYPE</a>
+
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li>
+                        <a href="@Url.Action("Buy", "Home", new { CompanyID = Model.CompanyID, YearMin = Model.YearMin, YearMax = Model.YearMax, PriceMin = Model.PriceMin, PriceMax = Model.PriceMax })" class="all-body-types">All Body Types</a>
+                    </li>
+                    @foreach (var item in Model.BodyList)
+                    {
+                        <div class="filter-body-type">
+                            <a href="@Url.Action("Buy", "Home", new { CompanyID = Model.CompanyID, BodyType = item.BodyTypeID, YearMin = Model.YearMin, YearMax = Model.YearMax, PriceMin = Model.PriceMin, PriceMax = Model.PriceMax })">
+                                <figure>
+                                    @*<div class="filter-car-icon suv">
+                                        </div>*@
+                                    <figcaption class="car-icon-text">@item.BodyTypeName</figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                    }
+
+
+
+                </ul>
+            </li>
+            <li>
+                <a href="#yearSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">YEAR</a>
+
+                <ul class="collapse list-unstyled" id="yearSubmenu">
+                    <li>
+                        @Html.ActionLink("All Years", "Buy", new { CompanyID = Model.CompanyID, BodyType = Model.BodyType, PriceMin = Model.PriceMin, PriceMax = Model.PriceMax }, new { @class = "all-body-types" })
+                    </li>
+
+                    <div class="filter-body-type">
+
+
+
+                        <a class="filter-select-bar half-select-bar" href="@Url.Action("Buy", "Home", new { CompanyID = Model.CompanyID, BodyType = Model.BodyType, YearMin = Model.CurrentYear, YearMax = Model.CurrentYear, PriceMin = Model.PriceMin, PriceMax = Model.PriceMax })">
+                            <span>@Model.CurrentYear</span>
+                            @{
+                                int year1 = Model.CurrentYear - 1;
+                                int year2 = Model.CurrentYear - 2;
+                            }
+                        </a>
+                        <a class="filter-select-bar half-select-bar" href="@Url.Action("Buy", "Home", new { CompanyID = Model.CompanyID, BodyType = Model.BodyType, YearMin = Model.CurrentYear - 1, YearMax = Model.CurrentYear - 1, PriceMin = Model.PriceMin, PriceMax = Model.PriceMax })">
+                            <span>@year1</span>
+                        </a>
+
+                        <a class="filter-select-bar half-select-bar" href="@Url.Action("Buy", "Home", new { CompanyID = Model.CompanyID, BodyType = Model.BodyType, YearMin = Model.CurrentYear-50, YearMax = Model.CurrentYear-2, PriceMin = Model.PriceMin, PriceMax = Model.PriceMax })">
+                            <span>@year1 and Before</span>
+                        </a>
+                        <br />
+                    </div>
+                </ul>
+            </li>
+            <li>
+                <a href="#priceSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Price</a>
+
+                <ul class="collapse list-unstyled" id="priceSubmenu">
+                    <li>
+                        <a href="@Url.Action("Buy", "Home", new { CompanyID = Model.CompanyID, BodyType = Model.BodyType, YearMin = Model.YearMin, YearMax = Model.YearMax})" class="all-body-types">All Prices</a>
+                    </li>
+
+                    <div class="filter-body-type">
+                        <a class="filter-select-bar half-select-bar" href="@Url.Action("Buy", "Home", new { CompanyID = Model.CompanyID, BodyType = Model.BodyType, YearMin = Model.YearMin, YearMax = Model.YearMax, PriceMin = 0, PriceMax = 20000 })">
+                            <span>Less than $20k</span>
+                        </a>
+                        <a class="filter-select-bar half-select-bar" href="@Url.Action("Buy", "Home", new { CompanyID = Model.CompanyID, BodyType = Model.BodyType, YearMin = Model.YearMin, YearMax = Model.YearMax, PriceMin = 20000, PriceMax = 30000 })">
+                            <span>$20k - $30k</span>
+                        </a>
+
+                        <a class="filter-select-bar half-select-bar" href="@Url.Action("Buy", "Home", new { CompanyID = Model.CompanyID, BodyType = Model.BodyType, YearMin = Model.YearMin, YearMax = Model.YearMax, PriceMin = 30000, PriceMax = 40000 })">
+                            <span>$30k - $40k</span>
+                        </a>
+                        <a class="filter-select-bar half-select-bar" href="@Url.Action("Buy", "Home", new { CompanyID = Model.CompanyID, BodyType = Model.BodyType, YearMin = Model.YearMin, YearMax = Model.YearMax, PriceMin = 40001, PriceMax = 2047483647 })">
+                            <span>Greater than $40k</span>
+                        </a>
+                        <br />
+                    </div>
+                </ul>
+            </li>
+
+
+        </ul>
+    </nav>
+
+
+    <section class="car-card-grids" style="width:100%;">
+        <div class="container" style="width:100%;">
+            <div class="car-section-header text-left">
+                <h5>@Model.SearchList.Count Results</h5>
+            </div>
+            <div class="row" style="width:100%;">
+                @{
+                    int extracol = 0;
+                    if (Model.SearchList.Count < 4)
+                    {
+                        extracol = 4 - Model.SearchList.Count;
+                    }
+                }
+                @foreach (var item in Model.SearchList)
+                {
+                    <div class="col-md-3 col-sm-4" style="width:100%;">
+
+                        <div class="panel panel-default" style="width:100%;">
+                            <a href="@Url.Action("CarDetails", "Home",new { CarID = item.CarID})">
+                                <div class="panel-thumbnail"><img src="@item.CarImage" class="img-responsive"></div>
+                                <div class="panel-body">
+                                    <div class="subtext">
+                                        <h3 class="car-title">@item.ModelName</h3>
+                                        <div class="car-details">
+                                            <div class="trim">@item.BodyType</div>
+                                        </div>
+                                        <div class="price">$ @item.Price USD</div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div><!--/col-->
+                    <br />
+                }
+                @if (extracol != 0)
+                {
+                    for (int i = 0; i < extracol; i++)
+                    {   
+                        <div class="col-md-3 col-sm-4">
+                 
+                            <div class="panel panel-default">
+
+                                <div class="panel-thumbnail">&nbsp;</div>
+                                <div class="panel-body">
+                                    <div class="subtext">
+                                        <h3 class="car-title">&nbsp; </h3>
+                                        <div class="car-details">
+                                            <div class="trim"> &nbsp;</div>
+                                        </div>
+                                        <div class="price">&nbsp; </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--/col-->
+                    }
+                }
+            </div>
+        </div>
+    </section>
+</div>
+
+

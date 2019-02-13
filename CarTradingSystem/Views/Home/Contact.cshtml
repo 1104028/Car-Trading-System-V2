@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="car-contact-form">
+    <div class="container">
+        <br />
+        <br />
+        <div class="text-center">
+            <h3>Contact Us</h3><br />
+            
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+
+            </div>
+
+            <div class="col-md-6" style="text-align:left;font-weight:normal;">
+                <h3>Nirapod.Bangla Solutions Limited</h3>
+                <h5>Flat # A-7, Silver Spring, 76 Indira Road, Dhaka-1215, Bangladesh</h5>
+                <h5>Telephone/FAX: +88029123084, Mobile: +8801799666555</h5>
+                <h5>Email: haque.saiful@nirapod.co.jp</h5><br />
+            </div>
+
+            <div class="col-md-3">
+
+            </div>
+        </div>
+       
+
+    </div>
+</section>
+
+<section class="peb-maps" id="google_map">
+
+    <div id="map" style="height:500px"></div>
+
+    <script type="text/javascript">
+            function myMap() {
+                var myCenter = new google.maps.LatLng(23.753139, 90.368174);
+                var mapCanvas = document.getElementById("map");
+                var mapOptions = { center: myCenter, zoom: 15 };
+                var map = new google.maps.Map(mapCanvas, mapOptions);
+                var marker = new google.maps.Marker({ position: myCenter });
+                marker.setMap(map);
+            }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu6tm60TzeUo9rWpLnrQ7mrFn4JPMVje4&callback=myMap"></script>
+    <!--
+    To use this code on your website, get a free API key from Google.
+    Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+    -->
+</section>
+
+
+

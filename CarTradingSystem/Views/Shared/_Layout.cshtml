@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="~/Resource/websiteimages/favicon.png">
+    <link href="~/Content/frontside/animate.min.css" rel="stylesheet" />
+    <link href="~/Content/frontside/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/frontside/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="">
+                <img src="~/Resource/logo/car_logo.jpg" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars fa-1x"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="@Url.Action("Index", "Home")">HOME</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Buy", "Home")">BUY</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("About", "Home")">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Contact", "Home")">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    @RenderBody()
+
+
+    <footer class="car-footer bg-dark text-light pb-1 pt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="car-footer-title text-uppercase mb-3">
+                        <p><strong>Nirapod.Bangla Solutions Limited</strong></p>
+                    </div>
+                    <p class="mb-3">Nirapod.Bangla Solutions Ltd. began with a passion for car trading.</p>
+                    <ul class="list-unstyled car-footer-contact mb-0">
+                        <li>
+                            <span><i class="fas fa-phone-square"></i></span>
+                            <a href="">+88-02-9123084</a>
+                        </li>
+                        <li>
+                            <span><i class="fas fa-envelope-square"></i></span>
+                            <a href="">nirapod.co.jp</a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <p><span class="text-light"><i class="fas fa-map-marker">&nbsp;</i>&nbsp;</span>Silver Spring, 76 Indira Road, Dhaka-1215, Bangladesh</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <div class="car-footer-title text-uppercase mb-md-3">
+                        <p><strong>Our Partners</strong></p>
+                    </div>
+                    <ul class="list-unstyled car-footer-useful-link mb-sm-3 mb-md-0">
+                        <li><a href="#"><span class="icons"><i class="fas fa-caret-right">&nbsp;</i>&nbsp;</span>BMW</a></li>
+                        <li><a href="#"><span class="icons"><i class="fas fa-caret-right">&nbsp;</i>&nbsp;</span>BMW</a></li>
+                        <li><a href="#"><span class="icons"><i class="fas fa-caret-right">&nbsp;</i>&nbsp;</span>BMW</a></li>
+                        <li><a href="#"><span class="icons"><i class="fas fa-caret-right">&nbsp;</i>&nbsp;</span>BMW</a></li>
+                    </ul>
+
+                    <div class="modal fade" id="siteMap" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-dark" id="exampleModalCenterTitle">Web Site Map</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body text-dark text-center">
+                                    <div class="peb-sitemap-row">
+                                        <p><strong>About Us</strong></p>
+                                        <ul class="list-inline mb-0">
+                                            <li class="list-inline-item"><a class="text-dark" href="greetings.html">Greetings</a></li>
+                                            <li class="list-inline-item"><a class="text-dark" href="corporate_overview.html">Corporate Overview</a></li>
+                                            <li class="list-inline-item"><a class="text-dark" href="our_team.html">Our Team</a></li>
+                                            <li class="list-inline-item"><a class="text-dark" href="corporate_governanace.html">Corporate Governance</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="peb-sitemap-row">
+                                        <p><strong>Services</strong></p>
+                                        <ul class="list-inline mb-0">
+                                            <li class="list-inline-item"><a class="text-dark" href="steel_building_fabrication.html">Steel Building Fabrication</a></li>
+                                            <li class="list-inline-item"><a class="text-dark" href="design_detailing.html">Design & Detailing</a></li>
+                                            <li class="list-inline-item"><a class="text-dark" href="structure_specification.html">Structures & Specifications</a></li>
+                                            <li class="list-inline-item"><a class="text-dark" href="erection_and_installation.html">Erection & Installation</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="peb-sitemap-row">
+                                        <p><strong><a class="text-dark" href="projects.html">Projects</a></strong></p>
+                                    </div>
+                                    <div class="peb-sitemap-row">
+                                        <p><strong><a class="text-dark" href="factory.html">Factory</a></strong></p>
+                                    </div>
+                                    <div class="peb-sitemap-row">
+                                        <p><strong><a class="text-dark" href="gallery.html">Gallery</a></strong></p>
+                                    </div>
+                                    <div class="peb-sitemap-row">
+                                        <p><strong><a class="text-dark" href="contact.html#google_map">Contact</a></strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="car-footer-title text-uppercase mb-md-3">
+                        <p><strong>Follow Us</strong></p>
+                    </div>
+                    <ul class="list-inline car-footer-follow-us">
+                        <li class="list-inline-item"><a href=""><i class="fab fa-facebook-square">&nbsp;</i></a></li>
+                        <li class="list-inline-item"><a href=""><i class="fab fa-google-plus-square">&nbsp;</i></a></li>
+                        <li class="list-inline-item"><a href=""><i class="fab fa-twitter-square">&nbsp;</i></a></li>
+                        <li class="list-inline-item"><a href=""><i class="fab fa-youtube">&nbsp;</i></a></li>
+                        <li class="list-inline-item"><a href=""><i class="fab fa-linkedin">&nbsp;</i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <p class="text-center">Copyright 2018  <a href=""><strong>Nirapod.Bangla</strong></a></p>
+        <a href="JavaScript:;" class="scroll_to_top">
+            <i class="fas fa-sort-up"></i>
+        </a>
+    </footer>
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/frontside/owl.carousel.min.js"></script>
+    <script src="~/Scripts/frontside/grid-gallery.min.js"></script>
+    <script src="~/Scripts/frontside/style.js"></script>
+    <script src="~/Scripts/frontside/bootstrap.min.js"></script>
+    <script src="~/Scripts/frontside/order-form.js"></script>
+
+</body>
+</html>

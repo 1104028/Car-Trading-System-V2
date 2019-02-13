@@ -1,0 +1,105 @@
+﻿@model CarTradingSystem.ViewModel.CarImageAdd
+@{
+    ViewBag.Title = "AddModelImage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="margin-left:30%">Model Add</h2>
+
+
+@using (Html.BeginForm(Html.BeginForm("AddModelImage",
+                        "Model",
+                        FormMethod.Post,
+                        new { enctype = "multipart/form-data" })))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.HiddenFor(model => model.ModelID);
+        @Html.LabelFor(model => model.ModelName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.DisplayFor(model => model.ModelName)
+
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Brand, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.DisplayFor(model => model.Brand)
+
+        </div>
+    </div>
+    <h3 style="padding-left:30%">Input Images</h3>
+    <div class="form-group">
+        <label class="control-label col-md-2">Thumb Image</label>
+        <div class="col-md-5">
+            <input type="file" name="thumb" id="thumb" required />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Card Image</label>
+        <div class="col-md-5">
+            <input type="file" name="cardimage" id="cardimage" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Car Image #1</label>
+        <div class="col-md-5">
+            <input type="file" name="img1" id="img1" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Car Image #2</label>
+        <div class="col-md-5">
+            <input type="file" name="img2" id="img2" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Car Image #3</label>
+        <div class="col-md-5">
+            <input type="file" name="img3" id="img3" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Car Image #4</label>
+        <div class="col-md-5">
+            <input type="file" name="img4" id="img4" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Car Image #5</label>
+        <div class="col-md-5">
+            <input type="file" name="img5" id="img5" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Car Image #6</label>
+        <div class="col-md-5">
+            <input type="file" name="img6" id="img6" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Car Image #7</label>
+        <div class="col-md-5">
+            <input type="file" name="img7" id="img7" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Car Image #8</label>
+        <div class="col-md-5">
+            <input type="file" name="img8" id="img8" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="ADD" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+    
+}

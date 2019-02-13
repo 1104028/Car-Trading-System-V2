@@ -1,0 +1,51 @@
+﻿@model CarTradingSystem.Models.Country
+@{
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="text-align:center">Add Country</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    if (ViewBag.message != null)
+    {
+        <script>
+            alert("@ViewBag.message"); // display string message
+        </script>
+    }
+    <style>
+        .register-box {
+            margin-top: 1%;
+        }
+    </style>
+    <div class="register-box">
+        <div class="register-box-body">
+
+            <div class="form-group has-feedback">
+                <label>Country</label>
+                @Html.EditorFor(model => model.CountryName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CountryName, "", new { @class = "text-danger" })
+            </div>
+
+            
+
+
+
+
+
+            <div class="row">
+                <div class="col-xs-8">
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">ADD</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        </div>
+        <!-- /.form-box -->
+    </div>
+    <!-- /.form-box -->
+}

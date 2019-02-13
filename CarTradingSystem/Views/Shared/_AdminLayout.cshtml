@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Car Trading System | Dashboard</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <!-- Ionicons -->
+
+    <link href="~/Content/ionicons.min.css" rel="stylesheet" />
+    <!-- Theme style -->
+
+    <link href="~/Content/AdminLTE.min.css" rel="stylesheet" />
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+
+    <link href="~/Content/_all-skins.min.css" rel="stylesheet" />
+    <!-- Morris chart -->
+
+    <link href="~/Content/morris.css" rel="stylesheet" />
+    <!-- jvectormap -->
+
+    <link href="~/Content/jquery-jvectormap.css" rel="stylesheet" />
+    <!-- Date Picker -->
+
+    <link href="~/Content/bootstrap-datepicker.min.css" rel="stylesheet" />
+
+    <!-- bootstrap wysihtml5 - text editor -->
+
+    <link href="~/Content/bootstrap3-wysihtml5.min.css" rel="stylesheet" />
+
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="@Url.Action("Index", "Administrator")" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>CT</b>S</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Car</b>Trading</span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <a href="#"  data-toggle="push-menu">
+                   
+                </a>
+                <div class="navbar-custom-menu">
+                   
+
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="hidden-xs">@HttpContext.Current.User.Identity.Name</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="@Url.Action("ChangePassword", "Home")" class="btn btn-default btn-flat">Change password</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="@Url.Action("Logout", "Home")" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="treeview">
+                        <a href="#">
+                           
+                            <span>Admin</span>
+
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Registration", "Admin")"></i>Admin Registration</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            
+                            <span>Body Type</span>
+
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Add", "BodyType")"></i>Add Body Type</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                           
+                            <span>Brand</span>
+
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Add", "Brand")"></i>Add Brand</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                           
+                            <span>Company</span>
+
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Add", "Company")">Add Company</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                           
+                            <span>Country</span>
+
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Add", "Country")">Add Country</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                           
+                            <span>Seaport</span>
+
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Add", "SeaPort")"></i>Add Seaport</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            
+                            <span>Car</span>
+
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Add", "Model")">Add Car</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                           
+                            <span>Best Seller</span>
+
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Add", "BestSeller")">Add a Car</a></li>
+                            <li><a href="@Url.Action("Update", "BestSeller")">Update a Car</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                           
+                            <span>Latest Car</span>
+
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Add", "LstestCar")">Add a Car</a></li>
+                            <li><a href="@Url.Action("Update", "LatestCar")">Update a Car</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+
+            <!-- Main content -->
+            <section class="content">
+                <!-- Main row -->
+                <div class="row">
+                    @RenderBody()
+                </div>
+                <!-- /.row (main row) -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        
+
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery 3 -->
+    <script src="~/Scripts/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <!-- Bootstrap 3.3.7 -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <!-- AdminLTE App -->
+    <script src="~/Scripts/adminlte.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,454 @@
+﻿@model CarTradingSystem.ViewModel.ModelDetailsImagesView
+@{
+    ViewBag.Title = "CarDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="car-project-page">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4 border-0">
+                    <img class="card-img-top" src="@Model.ThumbImage" alt="Image">
+                    <a class="more-image" href="#image-gallery"><i class="fas fa-eye"></i>View Gallery</a>
+                </div>
+            </div>
+            <div class="col-md-6 bacground-transparent">
+                <div class="mb-4 border-0">
+                    <h2>@Model.ModelName</h2>
+                    <h3 class="price">$ @Model.Price USD</h3>
+                    <h4>Made in @Model.Country</h4>
+                    <h5>Year of Release: @Model.YearOfRelease</h5>
+
+                </div>
+
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <div class="card mb-4 border-0">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="@Url.Action("GetQuotaion", "Home",new { CarID = Model.ModelID})"><button class="btn btn-primary">Get Quotation</button></a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="@Url.Action("PayBill", "Home")"><button class="btn btn-primary" type="submit">Pay Bill</button></a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<section class="car-overview">
+    <div class="container">
+        <div class="car-section-header text-center">
+            <h3>Mercedes-Benz C-Class Cabriolet Overview</h3>
+        </div>
+        <div class="row bacground-white">
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-green"><i class="fas fa-users">&nbsp;</i>&nbsp;<span class="text-secondary">Engine Type</span></h5>
+                        <p class="text-secondary">@Model.EngineType</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-green"><i class="fas fa-cogs">&nbsp;</i>&nbsp;<span class="text-secondary">Displacement</span></h5>
+                        <p class="text-secondary">@Model.Displacement</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-green"><i class="fas fa-headset">&nbsp;</i>&nbsp;<span class="text-secondary">Power</span></h5>
+                        <p class="text-secondary">@Model.Power</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-green"><i class="fas fa-users">&nbsp;</i>&nbsp;<span class="text-secondary">Torque</span></h5>
+                        <p class="text-secondary">@Model.Torque</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-green"><i class="fas fa-cogs">&nbsp;</i>&nbsp;<span class="text-secondary">Mileage</span></h5>
+                        <p class="text-secondary">N/A</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-green"><i class="fas fa-headset">&nbsp;</i>&nbsp;<span class="text-secondary">Transmission</span></h5>
+                        <p class="text-secondary">@Model.Transmission</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-green"><i class="fas fa-headset">&nbsp;</i>&nbsp;<span class="text-secondary">Drive Train</span></h5>
+                        <p class="text-secondary">@Model.DriveTrain</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-green"><i class="fas fa-headset">&nbsp;</i>&nbsp;<span class="text-secondary">Number of Gears</span></h5>
+                        <p class="text-secondary">@Model.NumberOfGears</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-green"><i class="fas fa-headset">&nbsp;</i>&nbsp;<span class="text-secondary">Number of Cylinders</span></h5>
+                        <p class="text-secondary">@Model.NumberofCylinders</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-green"><i class="fas fa-headset">&nbsp;</i>&nbsp;<span class="text-secondary">Performance 0 To 100 Kmph</span></h5>
+                        <p class="text-secondary">@Model.Performance0To100Kmph</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-green"><i class="fas fa-headset">&nbsp;</i>&nbsp;<span class="text-secondary">Maximum Speed</span></h5>
+                        <p class="text-secondary">@Model.MaximumSpeed</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-green"><i class="fas fa-headset">&nbsp;</i>&nbsp;<span class="text-secondary">Fuel Tank Capacity</span></h5>
+                        <p class="text-secondary">@Model.FuelTankCapacity</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+<section class="car-specifications">
+    <div class="container">
+        <div class="car-section-header text-center">
+            <h3>Mercedes-Benz C-Class Cabriolet Specifications</h3>
+        </div>
+        <div class="accordion" id="accordionExample">
+            <div class="car-accordion-card">
+                <div class="car-accordion-card" id="headingOne">
+                    <a href="" class="car-accordion-collapse collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">DIMENSIONS</a>
+                </div>
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="data-grid grid">
+                        <div class="data-grid__row grid grid-2">
+                            <div class="data-grid__label">Length</div>
+                            <div class="data-grid__val">@Model.Length</div>
+                        </div>
+                        <div class="data-grid__row grid grid-2">
+                            <div class="data-grid__label">Width</div>
+                            <div class="data-grid__val">@Model.Width</div>
+                        </div>
+                        <div class="data-grid__row grid grid-2">
+                            <div class="data-grid__label">Height</div>
+                            <div class="data-grid__val">@Model.Height</div>
+                        </div>
+                        <div class="data-grid__row grid grid-2">
+                            <div class="data-grid__label">Wheelbase</div>
+                            <div class="data-grid__val">@Model.Wheelbase</div>
+                        </div>
+                        <div class="data-grid__row grid grid-2">
+                            <div class="data-grid__label">Gross Weight</div>
+                            <div class="data-grid__val">@Model.GrossWeight</div>
+                        </div>
+                        <div class="data-grid__row grid grid-2">
+                            <div class="data-grid__label">Seating Capacity</div>
+                            <div class="data-grid__val">@Model.SeatingCapacity</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="car-accordion-card">
+                <div class="car-accordion-card" id="headingTwo">
+                    <a href="" class="car-accordion-collapse collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">WHEELS & TYRES</a>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="data-grid grid">
+                        <div class="data-grid__row grid grid-2">
+                            <div class="data-grid__label">Wheel Type</div>
+                            <div class="data-grid__val">@Model.WheelType</div>
+                        </div>
+                        <div class="data-grid__row grid grid-2">
+                            <div class="data-grid__label">Front Tyre Size</div>
+                            <div class="data-grid__val">@Model.FrontTyreSize</div>
+                        </div>
+                        <div class="data-grid__row grid grid-2">
+                            <div class="data-grid__label">Rear Tyre Size</div>
+                            <div class="data-grid__val">@Model.RearTyreSize</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="car-accordion-card">
+                <div class="car-accordion-card" id="headingThree">
+                    <a href="" class="car-accordion-collapse collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">BRAKING SYSTEM</a>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="data-grid grid">
+                        <div class="data-grid__row grid grid-2">
+                            <div class="data-grid__label">Front Brake Type</div>
+                            <div class="data-grid__val">@Model.FrontBrakeType</div>
+                        </div>
+                        <div class="data-grid__row grid grid-2">
+                            <div class="data-grid__label">Rear Brake Type</div>
+                            <div class="data-grid__val">@Model.RearBrakeType</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="car-accordion-card">
+                <div class="car-accordion-card" id="headingFour">
+                    <a href="" class="car-accordion-collapse collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">SUSPENSION</a>
+                </div>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                    <div class="data-grid grid">
+                        <div class="data-grid__row grid grid-2">
+                            <div class="data-grid__label">Front Suspension</div>
+                            <div class="data-grid__val">@Model.FrontSuspension</div>
+                        </div>
+                        <div class="data-grid__row grid grid-2">
+                            <div class="data-grid__label">Rear Suspension</div>
+                            <div class="data-grid__val">@Model.RearSuspension</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="car-accordion-card">
+                <div class="car-accordion-card" id="headingFour">
+                    <a href="" class="car-accordion-collapse collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFour">STEERING</a>
+                </div>
+                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                    <div class="data-grid grid">
+                        <div class="data-grid__row grid grid-2">
+                            <div class="data-grid__label">Power Steering</div>
+                            <div class="data-grid__val">@Model.PowerSteering</div>
+                        </div>
+                        <div class="data-grid__row grid grid-2">
+                            <div class="data-grid__label">Steering Type</div>
+                            <div class="data-grid__val">@Model.SteeringType</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@*<section class="car-features">
+    <div class="container">
+        <div class="car-section-header text-center">
+            <h3>Mercedes-Benz C-Class Cabriolet Features</h3>
+        </div>
+        <div class="accordion" id="accordionExample">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-xm-6 ">
+                    <div class="card text-center height">
+                        <div class="card-header">
+                            Safety & Security
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text"><i class="far fa-check-circle"></i> Airbags</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Passenger Airbags</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> ABS</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Electronic Brakeforce Distribution</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Brake Assist</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Hill Assist</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Electronic Stability Program</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Tractional Control</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Engine Immobilizer</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Child Safety Lock</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Power Door Lock</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Turn Indicators On ORVM</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Rear Wiper</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Rain Sensing Wipers</p>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-xm-6 ">
+                    <div class="card text-center height">
+                        <div class="card-header">
+                            Comfort & Convenience
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text"><i class="far fa-check-circle"></i> Cruise Control</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Power Outlets 12V</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Rear Parking Sensor</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Rear Parking Camera</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Electrically Adjustable Rear View Mirror</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Height Adjustable Driver Seat</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Upholstery</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Front Cup Holders</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Climate Control</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-xm-6 ">
+                    <div class="card text-center height">
+                        <div class="card-header">
+                            Lights
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text"><i class="far fa-check-circle"></i> Light Type</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Front Fog Lamps</p>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-xm-6 ">
+                    <div class="card text-center height">
+                        <div class="card-header">
+                            Instrumentation & Communication
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text"><i class="far fa-check-circle"></i> Distance To Empty</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Average Fuel Efficiency Indicator</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Seat Belt Warning</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Low Fuel Warning</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Door Ajar Warning</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> GPS Navigation</p>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-xm-6 ">
+                    <div class="card text-center height">
+                        <div class="card-header">
+                            Entertainment
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text"><i class="far fa-check-circle"></i> USB Support</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Bluetooth Support</p>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-xm-6 ">
+                    <div class="card text-center height">
+                        <div class="card-header">
+                            Entertainment
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text"><i class="far fa-check-circle"></i> USB Support</p>
+                            <p class="card-text"><i class="far fa-check-circle"></i> Bluetooth Support</p>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>*@
+
+@{int serialnumber = 1; }
+<section class="car-project-page" id="image-gallery">
+    <div class="car-section-header text-center">
+        <h3>Mercedes-Benz C-Class Cabriolet Photos</h3>
+    </div>
+
+    <div class="container">
+        <div id="gg-screen"></div>
+        <div class="row">
+
+            @foreach (var item in Model.carimages)
+            {
+
+                if (serialnumber <= 4)
+                {
+                    <div class="col-md-3 card mb-3 border-0 gg-element" id="gg-element">
+                        <img class="card-img-top" id="card-img-top" src="@item" alt="">
+                        <div class="card-img-overlay car-overlay">
+                            <div class="car-display-table">
+                                <div class="car-display-table-cell">
+                                    <div class="car-overlay-body text-center">
+                                        <a href=""><i class="fas fa-search"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-3 card mb-3 border-0 gg-element">
+                        <img class="card-img-top" src="@item" alt="">
+                        <div class="card-img-overlay car-overlay">
+                            <div class="car-display-table">
+                                <div class="car-display-table-cell">
+                                    <div class="car-overlay-body text-center">
+                                        <a href=""><i class="fas fa-search"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                serialnumber++;
+
+            }
+
+
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
